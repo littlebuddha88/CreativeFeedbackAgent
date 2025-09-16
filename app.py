@@ -1,7 +1,6 @@
 import streamlit as st
 import openai
 import json
-from openai.error import RateLimitError, OpenAIError
 
 # OpenAI API Key
 openai.api_key = st.secrets["OPENAI_API_KEY"].strip()
@@ -51,8 +50,6 @@ else:
                     feedback = response.choices[0].message.content
                     st.success("✅ 피드백 결과")
                     st.write(feedback)
-                except RateLimitError:
-                    st.error("⚠️ 요청이 많아 일시적으로 제한되었습니다. 잠시 후 다시 시도해주세요.")
-                except OpenAIError as e:
-                    st.error(f"OpenAI API 오류 발생: {str(e)}")
+                except Exception as e:
+                    st.error(f"⚠️ API 요청 중 오류 발생: {str(e)}")
             st.session_state["loading"] = False
