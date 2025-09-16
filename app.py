@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
 import json
+from openai.error import RateLimitError, OpenAIError
 
 # OpenAI API Key
 openai.api_key = st.secrets["OPENAI_API_KEY"].strip()
@@ -9,7 +10,7 @@ openai.api_key = st.secrets["OPENAI_API_KEY"].strip()
 with open("rubric.json", "r", encoding="utf-8") as f:
     rubric = json.load(f)
 
-st.title("🎨 AI 창작자 교육 피드백 챗봇 (테스트용)")
+st.title("🎨 AI 창작자 교육 피드백 챗봇 (테스트용 gpt-3.5-turbo)")
 
 # 단계 선택
 level = st.selectbox("학습 난이도", ["beginner", "intermediate", "advanced"])
@@ -34,13 +35,14 @@ else:
             st.warning("아이디어를 입력해주세요!")
         else:
             st.session_state["loading"] = True
+            # UTF-8 안전 처리
             prompt_text = selected_prompt.replace("{SUBMISSION}", submission)
             prompt_text = prompt_text.encode("utf-8", errors="replace").decode("utf-8")
 
             with st.spinner("AI가 피드백 작성 중..."):
                 try:
                     response = openai.chat.completions.create(
-                        model="gpt-3.5-turbo",  # 테스트용 저비용 모델
+                        model="gpt-3.5-turbo",
                         messages=[
                             {"role": "system", "content": "너는 창작자 교육을 돕는 피드백 코치다."},
                             {"role": "user", "content": prompt_text}
@@ -49,6 +51,8 @@ else:
                     feedback = response.choices[0].message.content
                     st.success("✅ 피드백 결과")
                     st.write(feedback)
-                except openai.error.RateLimitError:
+                except RateLimitError:
                     st.error("⚠️ 요청이 많아 일시적으로 제한되었습니다. 잠시 후 다시 시도해주세요.")
+                except OpenAIError as e:
+                    st.error(f"OpenAI API 오류 발생: {str(e)}")
             st.session_state["loading"] = False
