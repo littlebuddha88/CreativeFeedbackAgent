@@ -1,38 +1,32 @@
 {
   "beginner": [
     {
-      "category": "idea",
-      "title": "아이디어 정리",
-      "prompt": "난이도: 초급. 제출물: {SUBMISSION}. 목표: '짧고 명확한 아이디어 전달'. 피드백 포인트: 1) 핵심 메시지, 2) 타깃 전달 여부, 3) 실행 가능한 개선 3개."
+      "title": "아이디어 명확성",
+      "prompt": "사용자가 제출한 아이디어를 분석하고, 이해하기 쉽도록 개선할 방법을 알려주세요. 아이디어: {SUBMISSION}"
     },
     {
-      "category": "clarity",
-      "title": "문장 간결화",
-      "prompt": "난이도: 초급. 제출물: {SUBMISSION}. 목표: 문장·캡션을 1/3 길이로 줄이되 핵심 유지. 수정 예시 2가지 포함."
+      "title": "창의성",
+      "prompt": "사용자가 제출한 아이디어의 창의성을 평가하고, 더 독창적으로 발전시킬 수 있는 방법을 제안해주세요. 아이디어: {SUBMISSION}"
     }
   ],
   "intermediate": [
     {
-      "category": "story",
-      "title": "스토리 구성",
-      "prompt": "난이도: 중급. 제출물: {SUBMISSION}. 3막 구조로 재구성. 60초 스토리보드와 샷리스트 제공."
+      "title": "실현 가능성",
+      "prompt": "사용자의 아이디어가 현실에서 실행 가능한지 평가하고, 개선 포인트를 알려주세요. 아이디어: {SUBMISSION}"
     },
     {
-      "category": "tone",
-      "title": "톤/페르소나",
-      "prompt": "난이도: 중급. 제출물: {SUBMISSION}. 타깃 페르소나: {AGE/GENDER/INTERESTS}. 톤(유머/감성/전문)별 2가지 변형."
+      "title": "구체화",
+      "prompt": "사용자가 제출한 아이디어를 더 구체적이고 실용적으로 만들 수 있는 방법을 제안해주세요. 아이디어: {SUBMISSION}"
     }
   ],
   "advanced": [
     {
-      "category": "strategy",
-      "title": "콘텐츠 전략",
-      "prompt": "난이도: 고급. 제출물: {SUBMISSION}. 목표 KPI: {KPI}. 3개월 콘텐츠 로드맵 + A/B 테스트 아이디어 제시."
+      "title": "혁신성",
+      "prompt": "사용자의 아이디어가 기존 시장이나 관습과 비교해 얼마나 혁신적인지 평가하고, 혁신성을 높이는 방법을 제안해주세요. 아이디어: {SUBMISSION}"
     },
     {
-      "category": "brand",
-      "title": "브랜드 일관성",
-      "prompt": "난이도: 고급. 제출물: {SUBMISSION}. 브랜드 톤: {BRAND_GUIDELINES}. 수정해야 할 항목 6개."
+      "title": "시장성",
+      "prompt": "사용자가 제출한 아이디어의 시장성을 평가하고, 개선 또는 확장할 수 있는 방법을 알려주세요. 아이디어: {SUBMISSION}"
     }
   ]
 }
